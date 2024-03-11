@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/socnet5-style.css" rel="stylesheet" type="text/css"/>
+    <title>
+        Home - SocNet
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="boxError">
+    <h2>MENSAJES DE ERRORES</h2>
+    Faltan algunos campos por rellenar:
+    <ul>
+      {% for input in inputs %}
+         <li> {{ input }}</li>
+      {% endfor %}
+    </ul>
+    <form action="{{ next }}" method="get" style="width:20%">
+        <div class="inputs">
+            <input id="next" name="next" type="submit" value="Continue"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

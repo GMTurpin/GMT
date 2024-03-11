@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Delegaciones</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <script src="static/js/empresa.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#list_delegs").click(function(){
+            $("#depEmp").toggle();
+            $("#central").slideToggle("slow");
+            $("#box_lista_applys").hide();
+          });
+          cargar_lista_delegs()
+        });
+    </script>
+</head>
+<body>
+    <div id="boxnewpet" style="display:none; width:100%; margin-left:60px">
+<!--         Aquí abriré la ventana para cursar nueva solicitud     -->
+    </div>
+    <div id="box_lista_applys" style="display:none; width:100%; margin-left:60px">
+<!--         Aquí abriré la ventana para ver las solicitudes registradas     -->
+    </div>
+    <div id="cuadroDelegs"   style="width:100%; margin-left:60px">
+       <form id="caja_delegs" style="width:100%">
+       <input id="deleg_selected" name="deleg_selected" value="" type="hidden">
+       <input id="nombre_deleg" name="nombre_deleg" value="" type="hidden">
+       <input id="list_delegs"  name="list_delegs" type="button" class="boton" value="Delegaciones">
+         <div id="central" style="display:none">
+            <small style="color:#A52A2A; margin-left:3%">
+                <strong>Seleccione una delegación</strong><br>
+            </small>
+            <select id="desp_Delegs"  class="desplegable"  style="width:50%; margin-left:5%" onchange="datos_deleg(this.value)">
+                <option>(ninguna)</option>
+            </select>
+            <button id="elimDeleg"  name="elimDeleg" type="button" data-toggle="tooltip" title="Eliminar delegación"  style="margin:2px; height:30px;
+                      width:30px; float:right; border-radius:8px; background-image:url('/static/imagenes/eliminar.jpg')" onclick="quitar_deleg($('#desp_Delegs').val())">
+            </button>
+            <button id="newDeleg" name="newDeleg" type="button" data-toggle="tooltip" title="Añadir delegación" value="+" style="margin:2px; height:30px;
+                      width:30px; float:right; border-radius:8px; cursor:pointer; background-image:url('/static/imagenes/sumar.jpg')" onclick="nueva_deleg()">
+            </button>
+            <table id="tabla_datos_deleg" style="width:98%" >
+            </table>
+             <br><br>
+            <div id="confirmacion" class="boxmessage" >
+                 <small><label id="labexito" class="estilo"></label></small>
+            </div><br>
+            <input id="pedir_emple" name="pedir_emple" type="button"  data-toggle="tooltip" title="Consultar peticiones cursadas" value="Peticiones"
+                       style="border-radius:6px; position:relative; z-index:8" onclick="datos_applys()" >
+            <input id="candidatos" name="candidatos" type="button"  data-toggle="tooltip" title="Consultar curriculums" value="Candidatos"
+                       style="border-radius:6px; position:relative; z-index:9" onclick="res_prof()">
+            <input id="nueva_petit" name="nueva_petit" type="button"  data-toggle="tooltip" title="Nueva solicitud" value="Nueva petición"
+                       style="border-radius:6px; position:relative; z-index:8" onclick="nueva_peticion($('#desp_Delegs').val(),$('#desp_Delegs option:selected').text())" >
+            <input id="entrevist" name="entrevist" type="button"  data-toggle="tooltip" title="Ver agenda entrevistas" value="Entrevistas"
+                       style="border-radius:6px; position:relative; z-index:8" onclick="vercitas($('#deleg_selected').val())" >
+         </div>
+       </form>
+    </div>
+    <div id="deleg_nueva">
+<!--        Aquí abriré la ventana para crear nueva delegación     -->
+    </div>
+</body>
+</html>

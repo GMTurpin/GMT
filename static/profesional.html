@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <title>GESTIMPROF- Profesionales registrados</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/profesional.js"></script>
+    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script >
+    <script>
+       $(document).ready(function(){
+          conbsole.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+</head>
+<body>
+   <div id="enlaces" class="marcoleft">
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+   </div>
+   <div id="espacio_respempresas" style="position:absolute; top:25%; display:none; left:10%; width:55%; height:69px; z-index:8"></div>
+   <div id="squarecenter" class="marcocentro" style="width:40%">
+      <h2>Ficha de profesional</h2>
+      <input id="codigo_prof" name="codigo_prof" value="" type="hidden">
+       <div id="area_izda" style="width:85%; float:left">
+          <div id="fichas">
+               <form id="laficha">
+                  <div id="fichaprof" style="background-color:#FAEBD7; width:100%">
+                      <label>
+                           Ficha de
+                      </label><br>
+                      <table id="datos_prof" style="width:98%" >
+                      </table>
+                  </div><br>
+                  <div id="elcurric">
+                          <div id="boxexp" style="background-color:#FAEBD7; width:100%">
+                              <label>
+                                   Experiencia profesional
+                              </label><br>
+                              <textarea id="curriculum" rows="8" cols="45" style="width:91%"></textarea>
+                          </div>
+                  </div>
+               </form>
+          </div>
+      </div>
+      <div id="cintabotones" class="boxbotons">
+           <button id="ver_ofers" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                    background-image:url('/static/imagenes/ofertas.jpg'); cursor:pointer"  data-toggle="tooltip" title="Ver ofertas"
+                    onclick="web_ofertas()">
+           </button><br><br>
+           <button id="ver_resp" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                    background-image:url('/static/imagenes/buzon.jpg'); cursor:pointer"  data-toggle="tooltip" title="Ver respuestas"
+                    onclick="ver_resp($('#codigo_prof').val())">
+           </button><br><br>
+           <button id="save_exp" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                    background-image:url('/static/imagenes/salvar.png'); cursor:pointer"  data-toggle="tooltip" title="Guardar experiencia"
+                    onclick="grabar_exp($('#codigo_prof').val())">
+           </button><br>
+      </div>
+      <div id="area_dcha" style="width:53%; display:inline; float:right">
+          <div id="lasofertas"></div>
+      </div>
+   </div>
+</body>
+</html>

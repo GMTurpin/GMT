@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividad de la empresa</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log('jQUERY listo');
+            empresa=$( "#cuadro_emp option:selected" ).val();
+            $( "#actividad" )
+              .find( "label" )
+              .eq( 0 )
+              .html( "Actividad de " + empresa );
+        });
+    </script>
+</head>
+<body>
+<div id="left" >
+   <form id="actividad" style="width:80%" >
+      <label for="activEmp">
+           Actividad
+      </label><br>
+      <textarea id="activEmp" name="activEmp" rows="7" cols="60" >
+
+      </textarea>
+      <a href="save_active_emp">
+       <input id="saveActiv" name="saveActiv" type="submit"  data-toggle="tooltip" title="Guardar información"  value="Guardar" style="font-weight:bold;
+           float:right; border-radius:8px" onclick="save_activ()" >
+      </a>
+   </form>
+</div>
+</body>
+</html>

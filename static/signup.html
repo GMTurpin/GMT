@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+        <title>
+            GESTIMPROF - Sign Up
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="static/js/signup.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+    </head>
+    <body>
+        <h1>
+           Registro de Profesional
+        </h1>
+        <form action="signup" method="post" name="signup" onsubmit="return valid_signup()">
+            <ul class="errorMessages" style="display:none" id="errores_signup"></ul>
+            <div id="sideleft"  style="float:left; width:56%">
+                <label for="nombre">
+                        Nombre
+                </label>
+               <div class="inputs">
+                    <input id="nombre" maxlength="64" name="nombre"  placeholder="Nombre"   size="40" type="text" value=""/>
+               </div>
+               <label for="email_prof">
+                        Email
+               </label>
+               <div class="inputs">
+                    <input id="email_prof" name="email_prof"  placeholder="Email"  size="40" type="text" value=""/>
+               </div>
+               <label for="tel_prof">
+                        Teléfono
+               </label>
+               <div class="inputs">
+                    <input id="tel_prof" name="tel_prof"  placeholder="Teléfono"  size="15" type="text" value=""/>
+               </div>
+               <label for="city_prof">
+                        Residencia
+               </label>
+               <div class="inputs">
+                    <input id="city_prof" name="city_prof"  placeholder="Población"  size="40" type="text" value=""/>
+               </div>
+            </div>
+            <div id="sideright" style="display:inline; width:30%">
+               <label for="nif_prof">
+                        N I F
+                   </label>
+               <div class="inputs">
+                    <input id="nif_prof" name="nif_prof" maxlength="20" placeholder="NIF"  size="15" type="text" value=""/>
+               </div>
+               <label for="passwd">
+                        Password
+               </label>
+               <div class="inputs">
+                    <input id="passwd" name="passwd"  placeholder="Password"  size="30" type="password" value=""/>
+               </div>
+               <label for="confirm">
+                        Repetir Password
+               </label>
+               <div class="inputs">
+                    <input id="confirm" name="confirm"  placeholder="Repetir Password" size="30" type="password" value=""/>
+               </div><br>
+               <div class="inputs" style="float:right; padding-right:10%">
+                   <small><input id="signup_submit" name="signup_submit" type="submit" class="boton" style="cursor:pointer" value="Enviar" /></small>
+               </div>
+            </div>
+        </form>
+    </body>
+</html>
+

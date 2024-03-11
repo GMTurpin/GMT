@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> GESTIMPROF - Departamentos </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+</head>
+<body>
+    <div id="nuevoDepto" style="width:100%; margin-left:60px">
+       <form id="gestion_deptos" style="width:100%" >
+        <h3> Nuevo Departamento</h3>
+        <ul class="errorMessages" style="display:none" id="errores_newDepto"></ul>
+        <table id="tabla_new_depto" style="width:100%">
+            <tr>
+            <th style="width:30%">Departamento</th>
+                <td style="width=70%; padding-left=0%"><input id="Departamento"  name="Departamento" placeholder="Departamento" size="49" type="text" value="" ></td>
+            </tr>
+            <tr>
+            <th>Responsable</th>
+                <td><input id="Responsable"  name="Responsable" placeholder="Responsable" size="49" type="text"  value="" ></td>
+            </tr>
+            <tr>
+            <th>Teléfono</th>
+                <td>  <input id="Tel_depto"  name="Tel_depto" placeholder="Teléfono" size="49" type="text"  value="" ></td>
+            </tr>
+        </table><br>
+        <input id="codigo_dep" name="codigo_dep" value="" type="hidden">    <!-- Para guardar el codigo del depto seleccionado  -->
+        <input id="label_oculta" name="label_oculta" value="" type="hidden">    <!-- Para guardar el texto cambiante para el H3 de esta página  -->
+             <div id="Botones_New_Depto">
+                 <input id="Grabar"  type="button"  data-toggle="tooltip" title="Grabar"  value="Grabar" style="font-weight:bold; border-radius:8px;
+                        position:relative; z-index:7; width:68px; cursor:pointer" onclick="validateDepto()">
+                 <input id="Cancelar"  type="button" data-toggle="tooltip" title="Cancelar"  value="Cancelar" style="font-weight:bold; border-radius:8px;
+                        position:relative; z-index:8; width:68px; cursor:pointer" onclick="cerrar_depto()">
+                 <button id="elim_depto" type="button"  class="boton" style="width:25px; height:32px; float:right; border-radius:8px; cursor:pointer; visibility:hidden;
+                         background-image:url('/static/imagenes/papelera2.jpg')" data-toggle="tooltip" title="Eliminar departamento"
+                         onclick='borrar_depto($("#codigo_dep").val())'>
+                 </button>
+             </div>
+       </form>
+    </div>
+</body>
+</html>

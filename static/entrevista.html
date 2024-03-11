@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amita">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya SC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Artifika">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baumans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bruno Ace SC">
+    <title>GESTIMPROF- Entrevista</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script >
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+</head>
+<body>
+   <input id="refmarca" name="refmarca" value="" type="hidden">
+   <input id="refprof" name="refprof" value="" type="hidden">
+   <input id="refdeleg" name="refdeleg" value="" type="hidden">
+   <input id="modoestado" name="modoestado" value="" type="hidden">
+   <div id="primario" style="width:100%">
+     <form id="laficha">
+           <div id="titular"  class="marco">
+               <h3>Entrevista</h3>
+           </div><br>
+           <div id="area_central" style="width:100%">
+               <div id="imagfondo" class="imagen" style="background-image:url('/static/imagenes/entr01.jpg'); height:200px">
+                      <div id="agenda" style="width:80%">
+                          <div id="citaprof" style="background-color:#FAEBD7; width:100%;margin-left:10%">
+                              <table id="lamarca" style="width:98%; margin:auto" ></table>
+                          </div><br>
+                          <div id="fecha_hora"
+                               style="margin-left:35%; width:53%; background-color:rgb(255, 255, 238, 0.8); border-radius:8px; border:2px solid #d69544; padding:1%">
+                              <label for="calend" style="font-family:Alkatra">Seleccione fecha y hora</label><br>
+                              <input id="calend"  name="calend"  class="calendar" type="date"  style="margin-left:5%"  onfocus="$('#menscita').css('display','none')">
+                              <input id="reloj" name="reloj" class="calendar" type="time" onfocus="$('#menscita').css('display','none')">
+                          </div>
+                      </div><br>
+               </div>
+               <div id="menscita"  class="boxmessage">
+                   <label id="mensaje" class="estilo"></label>
+               </div>
+               <div id="btonsentrev"  class="boxbottom" style="width:25%; text-align:center">
+                   <button id="set_cita" type="button" class="boton" style="border-radius:8px; width:30px; height:30px;
+                        cursor:pointer;  background-image:url('/static/imagenes/mano.jpg')" data-toggle='tooltip' title="Anotar entrevista"
+                        onclick="validate_cita()" >
+                  </button>
+                   <button id="ver_agenda" type="button" class="boton" style="border-radius:8px; width:47px; height:32px;
+                        cursor:pointer;  background-image:url('/static/imagenes/agenda.jpg')" data-toggle='tooltip' title="Ver agenda de entrevistas"
+                        onclick="vercitas( $('#refdeleg').val() )" >
+                  </button>
+                  <button id="salir"  type="button" class="boton" style="font-weight:bold; border-radius:8px; width:30px; height:30px;
+                        background-image:url('/static/imagenes/exit.jpg')" data-toggle="tooltip" title="Cerrar Agenda"
+                        onclick="$('#espacio_citaprof').css('display','none')">
+                  </button>
+               </div>
+           </div>
+     </form>
+   </div>
+</body>
+</html>

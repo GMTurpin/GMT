@@ -1,0 +1,1 @@
+{"user_name": "GMTurpin", "password": "yosoyyo", "messages": [[1650126099.5157888, "Hola, soy GMTurpin"], [1650126119.8214881, "Trabajo en la empresa POLTEK"], [1650126461.7595696, "Soy responsable de departamento COMPRAS"], [1654333931.6354358, "Tengo certificado UNED en gesti\u00f3n comercial"]], "email": "zzalomoreno@gmail.com", "friends": []}

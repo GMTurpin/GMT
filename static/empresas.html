@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <title>GESTIMPROF- Directorio de empresas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script >
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+</head>
+<body>
+   <div id="enlaces" class="marcoleft">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="javascript:void(0)" onclick="about_us()">About us</a></li>
+        </ul>
+   </div>
+   <div id="box_marcas_prof" class="absolute">
+   </div>
+   <div id="espacio_fichaprof" style="position:absolute; top:35%; display:none; left:25%; width:45%; height:69px; z-index:11"></div>
+
+   <div id="espacio_citaprof" style="position:absolute; top:45%; display:none; left:27%; width:42%; height:69px; z-index:13"></div>
+
+   <div id="espacio_agendaentrevistas" style="position:absolute; top:17%; display:none; left:40%; width:50%; height:69px; z-index:15"></div>
+
+   <div id="recuadro" class="marcocentro" style="width:40%">
+        <h2>
+          Directorio de empresas
+        </h2>
+        <div id="zona_izda" style="width:90%; float:left">
+          <div id="las_empresas">
+              <form action="empresas" method="post" name="empresas" style="width:100%" >
+                 <select id="cuadro_emp" name="cuadro_emp" size="5" style="width:100%" onclick="cuadro_emp_click(this.value)" >
+
+                 </select>
+                 <div id="botones" style="float:right">
+                       <button class="redondo" id="añadir"  type="button" data-toggle="tooltip" title="Añadir empresa" style="background-image:url('/static/imagenes/sumar.jpg')"
+                               onclick="abrir_newEmp()">
+                       </button>
+
+                       <button class="redondo" id="eliminar" type="button" data-toggle="tooltip" title="Eliminar empresa"
+                               style="background-image:url('/static/imagenes/eliminar.jpg');
+                               background-repeat:no-repeat; margin:auto" onclick="borrar_empresa()">
+                       </button>
+
+                 </div>
+                       <button id="set_clave" type="button" class="boton" style="border-radius:8px; position:relative; width:30px; height:30px;
+                                cursor:pointer;background-image:url('/static/imagenes/candado.jpg')" data-toggle="tooltip" title="Asignar clave"  disabled
+                                onclick="ventana_clave()">
+                       </button>
+                       <button id="ver_clave" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:35px; height:30px;
+                                background-image:url('/static/imagenes/lupa.jpg'); cursor:pointer"  data-toggle="tooltip" title="Ver clave actual"
+                                onclick="get_clave($('#codigo_emp').val())">
+                       </button>
+                       <button id="salir"  type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                                visibility:hidden; background-image:url('/static/imagenes/exit.jpg')" data-toggle="tooltip" title="Cerrar ventana de claves"
+                                onclick="cerrar_claves()">
+                       </button>
+                       <div id="asignar_clave" style="width:98%; background-color:#FF7F50; padding:1%; display:none">
+                           <!-- Aquí se abre el area para asignar las claves de las empresas  -->
+                       </div>
+                       <input id="emp_selected" name="emp_selected" value="" type="hidden">
+                       <input id="codigo_emp" name="codigo_emp" value="" type="hidden">
+                 <div id="datosEmp"  style="background-color:#FAEBD7; width:100%; display:none" >
+                      <label>
+                         Datos de contacto
+                      </label><br>
+                      <textarea id="cuadroDatos" rows="4" cols="45" readonly >
+
+                      </textarea>
+                      <button id="editar"  type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                                background-image:url('/static/imagenes/editar2.jpg'); float:right; margin-right:2%" data-toggle="tooltip" title="Editar datos"
+                                onclick="edit_emp($('#codigo_emp').val())">
+                      </button>
+                 </div>
+              </form>
+          </div>
+          <div id="activ"  style="display:none">
+            <form id="actividad" style="width:100%" >
+              <label for="activEmp">
+                   Actividad
+              </label><br>
+              <textarea id="activEmp" name="activEmp" rows="7" cols="51" onclick="document.getElementById('saveActiv').disabled=false" >
+<!--       Aquí se muestran los datos de la actividad de la empresa seleccionada   -->
+              </textarea>
+              <input id="saveActiv" name="saveActiv" type="submit"  data-toggle="tooltip" title="Guardar información"  value="Guardar" style="font-weight:bold;
+                   border-radius:8px" onclick="save_activ()" >
+            </form>
+          </div>
+        </div>
+        <div id="zona_dcha" style="width:50%; display:inline; float:left">
+              <div id="depEmp">
+    <!--   Aquí se mostrará el contenido de la página Deptos.html     -->
+              </div>
+              <div id="delegs">
+    <!--           Aquí se mostrará el contenido de la página Delegs.html     -->
+              </div>
+        </div>
+   </div>
+</body>
+</html>

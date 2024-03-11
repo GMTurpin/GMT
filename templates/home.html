@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/socnet5-style.css" rel="stylesheet" type="text/css"/>
+    <title>
+        Home - SocNet
+    </title>
+
+    <!-- La siguiente línea carga jQuery en el cliente, solo es necesaria si se va a utilizar esta biblioteca -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/home.js"></script>
+
+</head>
+<body>
+<div id="container" style="width:85%">
+    <a href="/">
+        SocNet
+    </a>
+    |
+    <a href="empresas">
+        Empresas
+    </a>
+    |
+    <a href="logout">
+        Log Out ({{ nickname }})
+    </a>
+
+    <h1>
+        Hola, ¿cómo estás?
+    </h1>
+    <div>
+        <div id="area" class="left" style="display:inline-block">
+            <form action="home" method="post" name="home" onsubmit="return validateMessageDHTML()">
+                <ul class="errorMessages" style="display:none" id="errores_home"></ul>
+                <input id="friend_copy" name="friend" type="hidden"/>
+                <label for="post">
+                    Escribe algo:
+                </label>
+                <div class="inputs">
+                    <input id="post" maxlength="500" name="message" size="40" type="text" value=""/>
+                    {% for message in messages %}
+                        <li> {{ message[1] }}</li>
+                    {% endfor %}
+                </div>
+                <div class="inputs">
+                    <input id="post_submit" name="post_submit" type="submit" value="Enviar"/>
+                </div>
+            </form>
+        </div>
+
+        <div id="derecha"  class="right"   style="display:inline">
+            <!--
+                div_messages y div_friends funcionan como pestañas, cuando uno está visible, el otro debe estar
+                oculto. Por defecto, mostramos los mensajes
+            -->
+            <form id="div_messages" >
+                <label>Lo que dicen tus amigos:</label>
+                <div style="padding-left:30px">
+                    <small>
+                        Mostrando mensajes de:
+                        <select id="friend" name="friend" class="desplegable"  onchange="updateFriendMessagesJQUERY(this.value)">
+                            <option value=""></option>
+                            {% for amigo in all_users %}
+                                <option value="{{ amigo }}" >{{ amigo }} </option>
+                            {% endfor %}
+                        </select>
+                    </small>
+                </div>
+                <!--
+                    A diferencia de versiones anteriores, en la versión final los mensajes no se obtienen en la
+                    descarga inicial de la página, sino que se irán solicitando según el usuario interactúe con
+                    el documento, ya que podrá filtrar los mensajes que quiere visualizar en cada momento.
+                -->
+                <div id="messages" class="inputs"></div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

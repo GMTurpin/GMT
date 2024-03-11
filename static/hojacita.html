@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul">
+    <title>GESTIMPROF- Apunte de entrevista</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/jspdf.min.js"></script>
+    <script src="static/js/profesional.js"></script>
+    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script >
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+
+        document.querySelector("#imprimir").addEventListener("click", function() {
+          var div = document.querySelector("#laentrevista");
+          imprimirElemento(div);
+        });
+    </script>
+</head>
+<body>
+   <div id="first_nivel" style="width:100%">
+     <input id="cod_entrevista" name="cod_entrevista" value="" type="hidden">
+     <input id="cod_deleg" name="cod_deleg" value="" type="hidden">
+     <form id="laentrevista">
+       <div id="tithead"  class="marco">
+           <h2>Mensaje de empresa</h2>
+       </div><br>
+       <div id="mensentrev"  class="boxmessage">
+           <label id="confirmacion" class="estilo"></label>
+       </div>
+       <p style="font-family:Asul; font-size:85%; padding-left:8%; padding-right:8%">La empresa cuyos datos se indican a continuación le convoca a una entrevista con motivo de su
+           interés en la oferta presentada por su delegación señalada</p>
+         <div id="zona_izda" style="width:98%; float:left; background-color:rgb(255, 255, 238, 0.8); border-radius:8px; border:2px solid #d69544; padding:1%">
+          <h3>Origen del mensaje</h3>
+          <div class="boxbotons" style="float:right">
+               <button id="aceptar" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                        background-image:url('/static/imagenes/aceptar.jpg'); cursor:pointer"  data-toggle="tooltip" title="Aceptar entrevista"
+                        onclick="resp_entrev(  $('#cod_entrevista').val(),'ACEPTO')">
+               </button><br>
+               <button id="rechazar" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                        background-image:url('/static/imagenes/cerrar.png'); cursor:pointer"  data-toggle="tooltip" title="Rechazar entrevista"
+                        onclick="resp_entrev($('#cod_entrevista').val(),'RECHAZO')">
+               </button><br>
+               <button id="imprimir" type="button" class="boton" style="width:30px; height:30px; border-radius:8px; background-image:url('/static/imagenes/impresora.jpg');
+                           cursor:pointer" data-toggle="tooltip" title="Imprimir" ></button>
+          </div>
+          <div id="origen"  class="boxcurvado">
+              <label style="font-weight:bold; font-size:90%">Empresa &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;</label><label id="1" style="font-size:90%"></label><br>
+              <label style="font-weight:bold; font-size:90%">Delegacion &nbsp;&nbsp; &nbsp; &nbsp;</label><label id="3" style="font-size:90%"></label><br>
+              <label style="font-weight:bold; font-size:90%">Especialidad &nbsp; &nbsp;</label><label id="5" style="font-size:90%"></label>
+          </div>
+       </div>
+       <div id="zona_entrev" style="width:98%; float:left; background-color:rgb(255, 255, 238, 0.8); border-radius:8px; border:2px solid #d69544; padding:1%">
+          <h3>Datos de la entrevista</h3>
+          <div class="boxbotons" style="float:right">
+               <button id="Ubicacion" type="button" class="boton" style="border-radius:8px; position:relative; width:30px; height:30px;
+                        background-image:url('/static/imagenes/ubicacion.jpg'); cursor:pointer"  data-toggle="tooltip" title="Ver ubicación de delegación"
+                        onclick="ubic_deleg()">
+               </button><br>
+               <button id="Volver" type="button" class="boton" style="border-radius:8px; position:relative; width:30px; height:30px;
+                        background-image:url('/static/imagenes/agenda2.jpg'); cursor:pointer"  disabled  data-toggle="tooltip" title="Ver datos de entrevista"
+                        onclick="back_entrev()">
+               </button><br>
+               <button id="Salir" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px;
+                        background-image:url('/static/imagenes/exit.jpg'); cursor:pointer"  data-toggle="tooltip" title="Cerrar mensaje"
+                        onclick="cerrar_ofertas()">
+               </button><br>
+          </div>
+          <div id="entrev"  class="boxcurvado">
+              <label style="font-weight:bold; font-size:90%">Fecha &nbsp;&nbsp;</label><label style="font-size:90%"></label><br>
+              <label style="font-weight:bold; font-size:90%">Hora &nbsp;&nbsp; &nbsp;</label><label style="font-size:90%"></label><br>
+              <label style="font-weight:bold; font-size:90%">Lugar &nbsp; </label><label style="font-size:90%">Dirección de la delegación</label>
+          </div>
+          <div id="espacio_ubicacion" style="display:none">
+               <table id="tabla_ubicacion" style="width:80%">
+               </table>
+          </div>
+       </div>
+     </form>
+   </div>
+</body>
+</html>

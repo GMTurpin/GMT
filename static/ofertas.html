@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <title> GESTIMPROF - Ofertas activas </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/profesional.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+
+       document.querySelector("#printofertas").addEventListener("click", function() {
+          var div1 = document.querySelector("#boxhead");
+          var div2 = document.querySelector("#tabla_header");
+          var div3 = document.querySelector("#zona_ofers");
+          caja=[div1,div2,div3]
+          imprimirVarios(caja);
+       });
+    </script>
+</head>
+<body>
+   <input id="ofer_selected" name="ofer_selected" value="" type="hidden">
+   <input id="ref_deleg" name="ref_deleg" value="" type="hidden">
+   <input id="ref_emp" name="ref_emp" value="" type="hidden">
+   <div id="boxofertas"  style="width:100%">
+       <form id="listofertas"  name="listofertas"  style="width:96%">
+          <div id="boxhead" class="marco">
+             <h2>Ofertas activas</h2>
+          </div><br>
+          <div id="tabla_header">
+              <table id="headers" style="width:100%">
+                  <thead><tr><th style="width:6%">Cod</th><th style="width:24%">Empresa</th><th style="width:19%">Deleg</th><th style="width:82%">Especialidad</th></tr></thead></table>
+          </div>
+          <div id="zona_ofers" class="scroll">
+               <table id="tab_ofers" style="width:100%"></table><br>
+          </div><br>
+          <div id="detalles" style="display:none">
+               <label>Requisitos</label>
+               <textarea id="detail_ofer" name="detail_ofer"  rows="6"  cols="73">
+               </textarea>
+              <div style="border:2px solid #d69544; border-radius: 10px; background-color:#FAEBD7; padding:10px; margin:auto; width:80%; font-family:Amarante; font-size:80%">
+                 <input type="checkbox" id="marcada"  name="marcada" value="sin marcar" data-toggle="tooltip" title="Marcar oferta si interesa"
+                          onchange="marca_oferta()">
+                 <label for="marcada">Marque la oferta si le interesa y espere respuesta de la empresa anunciadora</label>
+              </div>
+          </div>
+          <div id="mensofers"  class="boxmessage">
+               <label id="informe" class="estilo"></label>
+          </div>
+          <button id="printofertas" type="button" class="boton" style="width:30px; height:30px; border-radius:8px; background-image:url('/static/imagenes/impresora.jpg')"
+                  data-toggle="tooltip" title="Imprimir" ></button>
+          <div id="enroll" style="float:right; display:inline">
+             <button id="enrollar" type="button"  class="boton"
+                     style="width:65px; height:30px; float:right; border-style:outset; border-color:grey; cursor:pointer; background-image:url('/static/imagenes/enrollar2.jpg')"
+                      data-toggle="tooltip" title="Cerrar lista de ofertas"  onclick="cerrar_ofertas()">
+             </button>
+          </div>
+       </form>
+   </div>
+</body>
+</html>

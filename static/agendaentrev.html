@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Artifika">
+    <title> GESTIMPROF - Agenda de entrevistas </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+
+       document.querySelector("#printagenda").addEventListener("click", function() {
+          var div = document.querySelector("#agendaentr");
+          printdiv(div);
+       });
+    </script>
+</head>
+<body>
+   <div id="lista_entrev"  style="width:100%">
+       <form id="agendaentr"  name="agenda"  style="width:96%">
+            <div id="img_agenda" style="background-image:url('/static/imagenes/agenda3.jpg')">
+               <div id="headcitas" class="marco">
+                  <h3>Agenda de entrevistas programadas</h3>
+               </div><br>
+               <div id="etiq_citas" style="margin-left:10%; font-weight:bold">
+                  <label id="lab_empresa" class="estilo">Empresa</label><br>
+                  <label id="lab_deleg"   class="estilo">Delegación</label>
+              </div><br>
+
+              <div id="filascitas" style="width:100%">
+                  <table id="lascitas" style="width:97%"></table>
+              </div><br>
+
+              <div id="mensagenda"  class="boxmessage">
+                  <small><label id="ceroagenda" class="estilo"></label></small>
+              </div>
+            </div>
+            <div id="btonsagenda"  class="boxbottom" style="width:10%">
+                <button id="printagenda" type="button" class="boton" style="width:30px; height:30px; border-radius:8px; background-image:url('/static/imagenes/impresora.jpg')"
+                           data-toggle="tooltip" title="Imprimir" ></button>
+                <button id="salir_agenda"  type="button" class="boton" style="font-weight:bold; border-radius:8px; width:30px; height:30px;
+                    background-image:url('/static/imagenes/exit.jpg')" data-toggle="tooltip" title="Cerrar Agenda"
+                    onclick="$('#espacio_agendaentrevistas').css('display','none')">
+                </button>
+            </div>
+
+       </form>
+   </div>
+</body>
+</html>

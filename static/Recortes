@@ -1,0 +1,26 @@
+@app.route('/save_apply', methods=['POST'])
+def save_apply():
+    name_empresa=request.form.get('company', None)
+    deleg=request.form.get('branch', None)
+    profession=request.form.get('specialty', None)
+    requirements=request.form.get('requist', None)
+    requirements=requirements.strip()
+    directory = os.path.join(SITE_ROOT, "applys")
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    file_path = os.path.join(SITE_ROOT, "applys/", name_empresa+"_"+deleg)
+    if not os.path.isfile(file_path):
+        datos = {
+            "empresa": name_empresa,
+            "delegacion": deleg,
+            "especialidad": [{"area" :profession, "requisitos" :requirements}]
+        }
+        with open(file_path, 'w') as f:
+            json.dump(datos, f)
+    else:
+        with open(file_path, 'r') as f:
+           ficha=json.load(f)
+           ficha["especialidad"].append({"area" :profession, "requisitos" :requirements})
+        with open(file_path, 'w') as modificado:
+            json.dump(ficha, modificado)
+    return "cadena"

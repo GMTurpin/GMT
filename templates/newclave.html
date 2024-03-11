@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> GESTIMPROF - Clave de acceso para empresario</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+</head>
+<body>
+   <div class="header" style="background-image:url('/static/imagenes/logoheader4.jpg');height:50">
+        <h1 style="font-size:48px">GestImprof</h1>
+   </div>
+   <div id="enl" class="marcoleft">
+        <ul>
+               <li><a href="/">Home</a></li>
+               <li><a href="javascript:void(0)" onclick="about_us()">About us</a></li>
+        </ul>
+   </div>
+   <div id="rec" class="marcocentro" style="width:40%">
+        <h2>Gestión de claves de empresa</h2>
+        <form action="{{ next }}" method="get" style="width:85%; padding:2px; margin:auto">
+          <div id="cajon_clave" style="margin:auto">
+            <div id="imagen" style="background-image:url('/static/imagenes/securebox.jpg'); height:200px">
+                <h3>Empresa  {{ empresa }}</h3>
+                <label style="margin-left:40px">{{ etiqueta }}</label>
+                <div style="margin-top:25px; margin-left:260px; margin-right:60px; color:#000000; font-weight:bold; border-radius: 15px 50px 30px 5px;
+                        border-style:solid; border-width:5px; border-color:#A52A2A; background-color:#F5F5DC; text-align:center">
+                    <label> {{ clave }} </label>
+                </div>
+                <div style="margin-top:40px; margin-left:420px">
+                    <button id="salir" type="submit" class="boton" style="font-weight:bold; width:35px; height:30px">
+                        <img src="/static/imagenes/exit.jpg"  data-toggle="tooltip" title="Salir" width="100%" height="100%"/>
+                    </button>
+                </div>
+            </div>
+          </div>
+        </form>
+   </div>
+</body>
+</html>

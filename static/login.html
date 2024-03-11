@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+        <title>
+            Log In - SocNet
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="static/js/login.js"></script>
+    </head>
+    <body>
+        <h1>
+            Login
+        </h1>
+        <form action="login" method="post" name="login" onsubmit="return validateLoginDHTML()"> <!-- Esta funcion está en el fichero login.js -->
+            <ul class="errorMessages" style="display:none" id="errores_login"></ul>
+            <label for="email">
+                    Email
+            </label>
+            <div class="inputs">
+                <input id="email" name="email" placeholder="Email"  size="80" type="text" value=""/>
+            </div>
+            <label for="passwd">
+                    Password
+             </label>
+             <div class="inputs">
+                <input id="passwd" name="passwd" placeholder="Password"  size="80" type="password" value=""/>
+            </div>
+            <label>
+                <input id="remember_me" name="remember_me" type="checkbox" value="y"/>
+                    Remember Me
+            </label>
+            <div class="inputs">
+                <input id="login_submit" name="login_submit" type="submit" value="Log In"/>
+            </div>
+        </form>
+    </body>
+</html>
+
+
+
+
+

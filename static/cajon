@@ -1,0 +1,56 @@
+
+INICIO DEL archivo server.py
+
+try:
+    conexion = mysql.connector.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='master#7523',
+        database='gestor'
+    )
+    if conexion.is_connected():
+        print('Conexion exitosa')
+        mycursor = conexion.cursor()
+        mycursor.execute("SELECT DATABASE()")
+        row=mycursor.fetchone()
+        print('Conectado a la base de datos:{}'.format(row))
+#        mycursor.execute("CREATE TABLE empresas (Ref INT, Empresa VARCHAR(40), NIF VARCHAR(9), Director VARCHAR(40), Telefono INT)")
+        add_empresa=("INSERT INTO empresas (Ref,Empresa, NIF, Director, Telefono) VALUES (%s, %s, %s, %s, %s)")
+        data_empresa=('432','CIBERWORKS','B93462557','Alan Reynolds','943652878')
+        mycursor.execute(add_empresa,data_empresa)
+        mycursor.execute("SELECT * FROM empresas")
+        fila=mycursor.fetchone()
+        while fila is not None:
+            print(fila[3])
+            fila = mycursor.fetchone()
+except Exception as ex:
+    print(ex)
+finally:
+    if conexion.is_connected():
+       conexion.close()
+       print('Conexion finalizada')
+//=====================================================================================================================
+//=====================================================================================================
+function lista_resp(codprof) {
+    $.post('/get_respempresas', {elprof:codprof})
+      .done(function(data) {
+         alert(data)
+         for (let i=0; i < data.length; i++) {
+               img=escoger_boton(data[i][5])
+               $('#tab_respuestas').append('<tbody><tr><td style="width:26%">' + data[i][6] +'</td><td style="width:25%">' + data[i][7] + '</td><td style="width:43%">' + data[i][8]
+               +'</td><td style="width:8%"><input type="button" class="smallredondo" value=' + data[i][0] + ' style="background-image:' + img + ' " '+
+               ' onclick="alert(this.value)"></td></tr></tbody>')
+         }
+      },"json")
+}
+//=====================================================================================================
+
+
+
+
+
+
+
+
+

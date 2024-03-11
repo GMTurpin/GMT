@@ -1,0 +1,7 @@
+@app.route('/load_activ_deleg', methods=['POST'])
+def load_activ_deleg():
+    deleg = request.form.get('company',None)
+    file_path = os.path.join(SITE_ROOT, "applys/", deleg)
+    with open(file_path, 'r') as f:
+        inform = json.load(f)
+    return inform

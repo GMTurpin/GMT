@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Artifika">
+    <title> GESTIMPROF - Respuestas de profesionales </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+
+       document.querySelector("#printmarcas").addEventListener("click", function() {
+          var div = document.querySelector("#lista_marcas");
+          printdiv(div);
+       });
+    </script>
+</head>
+<body>
+   <div id="lista_marcas"  style="width:100%">
+       <form id="marcprof"  name="marcprof"  style="width:96%">
+          <div id="headmarcas" class="marco">
+             <h2>Respuestas de profesionales</h2>
+          </div><br>
+
+           <div id="etiq_marcas" style="margin-left:10%; font-weight:bold">
+              <label id="label_empresa" class="estilo">Empresa</label><br>
+              <label id="label_branch" class="estilo">Delegación</label>
+              <button id="enrollar" type="button"  class="boton"
+                 style="width:65px; height:30px; float:right; border-style:outset; border-color:grey; cursor:pointer"
+                 onclick="$('#box_marcas_prof').css('display','none')">
+                 <img src="/static/imagenes/enrollar.jpg"  data-toggle="tooltip" title="Cerrar ventana" width="100%" height="100%"/>
+              </button>
+          </div><br>
+
+          <div class="textheader">
+            <p>A continuación se muestra la lista de profesionales que han solicitado atención por alguna de sus ofertas</p>
+          </div><br>
+
+          <div id="filasmarcas" style="width:100%">
+              <table id="lasmarcas" style="width:97%"></table>
+          </div><br>
+             <table style="font-family:Amarante; font-size:70%; padding:1%; width:80%; float:left">
+                 <tr><td class="tdbotons"><img src="/static/imagenes/verde.jpg"></td><td class="tdmensaje">Tiene entrevista</td>
+                     <td class="tdbotons"><img src="/static/imagenes/rojo.jpg"></td><td class="tdmensaje">Rechazado</td>
+                     <td class="tdbotons"><img src="/static/imagenes/naranja.jpg"></td><td class="tdmensaje">No se ha respondido</td></tr>
+             </table>
+             <button id="printmarcas" type="button" class="boton" style="width:30px; height:30px; border-radius:8px; background-image:url('/static/imagenes/impresora.jpg')"
+                           data-toggle="tooltip" title="Imprimir" ></button>
+          <div id="mensmarcas"  class="boxmessage">
+              <small><label id="ceromarcas" class="estilo"></label></small>
+          </div>
+       </form>
+   </div>
+</body>
+</html>

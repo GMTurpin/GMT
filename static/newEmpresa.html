@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8"/>
+        <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+        <title> GESTIMPROF - Nueva empresa </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="static/js/empresa.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+    </head>
+    <body>
+       <div id="cuerpo">
+            <h1>
+                Nueva Empresa
+            </h1>
+            <form action="newEmpresa" method="post" name="newEmpresa"  onsubmit="return validateEmpress()">
+                <ul class="errorMessages" style="display:none" id="errores_nuevaempresa"></ul>
+                <div id="izquierda" style="float:left; width:56%">
+                   <label for="empresa">
+                            Empresa
+                   </label>
+                   <div class="inputs">
+                        <input id="empresa" name="empresa" maxlength="64" placeholder="Empresa"  size="40" type="text" value="" style="text-transform:uppercase"/>
+                   </div>
+                   <label for="director">
+                          Director
+                   </label>
+                   <div class="inputs">
+                        <input id="director" name="director"  placeholder="Director"  size="40" type="text" value=""/>
+                   </div>
+                   <label for="email_emp">
+                          Email
+                   </label>
+                   <div class="inputs">
+                        <input id="email_emp" name="email_emp"  placeholder="Email" size="40" type="text" value=""/>
+                   </div>
+                </div>
+                <div id="derecha" style="display:inline; width:30%">
+                   <label for="nif">
+                            N I F
+                   </label>
+                   <div class="inputs">
+                        <input id="nif" name="nif" maxlength="20" placeholder="NIF"  size="15" type="text" value=""/>
+                   </div>
+                   <label for="telefono">
+                          Teléfono
+                   </label>
+                   <div class="inputs">
+                        <input id="telefono" name="telefono"  placeholder="Teléfono"  size="15" type="text" value=""/>
+                   </div><br>
+                   <div class="inputs" style="float:right; padding-right:20%">
+                     <small><input id="empresa_submit" name="empresa_submit" class="boton" type="submit" value="Guardar"  style="cursor:pointer"/></small>
+                   </div>
+                </div>
+            </form>
+       </div>
+    </body>
+</html>
+

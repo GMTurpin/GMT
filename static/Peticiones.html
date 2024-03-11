@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> Solicitud de empleados </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+</head>
+<body>
+   <div id="new_apply"  style="width:93%">
+      <form id="nuevapet"  style="width:100%" >
+          <input id="cempresa" name="cempresa" value="" type="hidden">
+          <input id="cdeleg" name="cdeleg" value="" type="hidden">
+          <div id="cabecera" class="marco">
+             <h3>Solicitud de empleado</h3>
+          </div><br>
+          <ul class="errorMessages"  id="errores_new_apply"  style="display:none"></ul>
+          <div id="etiquetas" style="margin-left:30%; font-weight:bold">
+              <small>
+                  <label id="labemp" class="estilo">Empresa</label><br>
+                  <label id="labdeleg" class="estilo">Delegacion</label>
+              </small>
+              <br>
+          </div>
+          <label for="especialidad" style="font-family:Garamond; font-size:0.87em; font-weight:bold">
+              Especialidad
+          </label>
+          <div class="inputs">
+             <input id="especialidad"   name="especialidad"  placeholder="especialidad"  size="59"  type="text" value=""/>
+          </div>
+          <label for="requisitos" style="font-family:Garamond; font-size:0.87em; font-weight:bold">
+              Requisitos
+          </label>
+          <div class="inputs">
+              <textarea id="requisitos" name="requisitos" rows="7" cols="58" onclick="document.getElementById('Grabar_apply').disabled=false" >
+              </textarea>
+          </div>
+            <div id="Botones_New_Apply">
+                 <input id="Grabar_apply"  type="button"  data-toggle="tooltip" title="Grabar"  value="Grabar" style="font-weight:bold; border-radius:8px;
+                        width:68px" onclick="validateApply( $('#cempresa').val(), $('#cdeleg').val() )" >
+                 <input id="Canc_apply"  type="button" data-toggle="tooltip" title="Cancelar"  value="Cancelar" style="font-weight:bold; border-radius:8px;
+                        width:68px" onclick="cerrar_apply()">
+            </div>
+      </form>
+   </div>
+</body>
+</html>

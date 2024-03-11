@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> GESTIMPROF - Asignación de claves </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresas.js"></script>
+</head>
+<body>
+    <form id="nueva_clave"   name="nueva_clave">
+       <h3>Asignación de claves</h3>
+         <label for="clave"><small>Asigne la clave para esta empresa</small></label>
+           <div class="inputs">
+                <input id="clave"  name="clave" maxlength="20" placeholder="Clave de empresa"   size="22" type="password" value=""  onfocus="($('#confirmado').css('display','none'))"/>
+           </div>
+         <label for="conf_clave"><small>Repita la Clave</small></label>
+           <div class="inputs">
+                <input id="conf_clave" name="conf_clave" maxlength="20" placeholder="Repita clave" size="22" type="password" value="" onfocus="($('#confirmado').css('display','none'))"/>
+           </div>
+           <div id="confirmado" class="boxmessage">
+                <small><label id="success" class="estilo"></label></small>
+           </div>
+           <div class="inputs">
+               <input id="check_clave" name="check_clave" type="button" value="Check" style="float:right" onclick="validate_clave()"/>
+           </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <title> GESTIMPROF - Respuestas de empresas </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/profesional.js"></script>
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+
+       document.querySelector("#imprimresp").addEventListener("click", function() {
+          var div = document.querySelector("#boxofertas");
+          caja=[div]
+          imprimirVarios(caja);
+       });
+    </script>
+</head>
+<body>
+   <input id="ofer_selected" name="ofer_selected" value="" type="hidden">
+   <input id="ref_deleg" name="ref_deleg" value="" type="hidden">
+   <input id="ref_emp" name="ref_emp" value="" type="hidden">
+   <div id="boxofertas"  style="width:100%">
+       <form id="listmensajes"  name="listmensajes"  style="width:96%">
+          <div id="boxhead" class="marco">
+             <h2>Respuestas de empresas</h2>
+          </div><br>
+
+          <div class="textheader">
+            <p>A continuación puede ver la lista de las ofertas a las que ha contestado y el estado de respuesta de la empresa anunciadora</p>
+          </div><br>
+
+          <div id="tab_header">
+              <table id="heads" style="width:100%">
+                  <thead><tr><th style="width:25%">Empresa</th><th style="width:25%">Delegación</th><th style="width:42%">Especialidad</th><th style="width:8%">Estado</th></tr></thead>
+              </table>
+          </div>
+          <div id="zona_resp" class="scroll">
+               <table id="tab_respuestas" style="width:100%"></table><br>
+          </div><br>
+          <div id="ubicacion" style="display:none">
+               <label>Delegación</label>
+               <table id="detail_deleg"  style="display:none">
+               </table>
+          </div>
+           <div id="mensresp"  class="boxmessage">
+               <label id="elaviso" class="estilo"></label>
+           </div>
+          <div id="bot_enrollar">
+             <table style="font-family:Amarante; font-size:70%; padding:1%; width:80%; float:left">
+                 <tr><td class="tdbotons"><img src="/static/imagenes/verde.jpg"></td><td class="tdmensaje">Tiene entrevista</td>
+                     <td class="tdbotons"><img src="/static/imagenes/rojo.jpg"></td><td class="tdmensaje">Rechazado</td>
+                     <td class="tdbotons"><img src="/static/imagenes/naranja.jpg"></td><td class="tdmensaje">No hay respuesta</td></tr>
+             </table>
+             <button id="imprimresp" type="button" class="boton" style="width:30px; height:30px; border-radius:8px; background-image:url('/static/imagenes/impresora.jpg')"
+                           data-toggle="tooltip" title="Imprimir" ></button>
+
+             <button id="roll" type="button"  class="boton"
+                     style="width:65px; height:30px; float:right; background-image:url('/static/imagenes/enrollar2.jpg')"
+                      data-toggle="tooltip" title="Cerrar lista de respuestas"  onclick="$('#espacio_respempresas').css('display','none')">
+             </button>
+          </div>
+       </form>
+   </div>
+</body>
+</html>

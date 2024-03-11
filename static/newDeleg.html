@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> GESTIMPROF - Delegaciones </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+</head>
+<body>
+   <div id="nuevaDeleg"  style="width:100%;margin-left:60px">
+      <form id="gest_delegs"  style="width:100%" >
+          <h3>Nueva Delegación</h3>
+          <ul class="errorMessages"  id="errores_newDeleg"  style="display:none"></ul>
+          <table id="tabla_new_deleg" style="width:98%" >
+          <tr>
+            <th style="width:30%">Zona</th>
+              <td style="width:70%">   <input id="Zona"  name="Zona" placeholder="Ciudad" size="52" type="text" value="" ></td></tr>
+          <tr>
+            <th>Dirección</th>
+              <td>  <input id="Dirección"  name="Dirección" placeholder="Dirección" size="52" type="text" value="" ></td></tr>
+          <tr>
+            <th>Email</th>
+              <td> <input id="Email_deleg"  name="Email_deleg" placeholder="Email" size="52" type="email" value="" ></td></tr>
+          <tr>
+            <th>Teléfono</th>
+              <td><input id="Tfno_deleg"  name="Tfno_deleg" placeholder="Teléfono" size="52" type="text" value="" ></td></tr>
+          <tr>
+            <th>Contacto</th>
+              <td> <input id="Contacto"  name="Contacto" placeholder="Contacto" size="52" type="text" value="" ></td></tr>
+          </table><br>
+             <div id="Botones_New_Deleg">
+                 <input id="Grabar_deleg"  type="button"  data-toggle="tooltip" title="Grabar"  value="Grabar" style="font-weight:bold; border-radius:8px;
+                        width:68px; cursor:pointer" onclick="validateDeleg()">
+                 <input id="Canc_deleg"  type="button" data-toggle="tooltip" title="Cancelar"  value="Cancelar" style="font-weight:bold; border-radius:8px;
+                        width:68px; cursor:pointer" onclick="cerrar_deleg()">
+             </div>
+      </form>
+   </div>
+</body>
+</html>

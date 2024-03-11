@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Antic Slab">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <title>
+        GestImprof
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+<body>
+    <div class="header" style="background-image:url('/static/imagenes/logoheader4.jpg');height:50">
+        <h1 style="font-size:48px">GestImprof</h1>
+    </div>
+    <div id="marcoentero">
+
+    </div>
+    <div id="marcoleft">
+        <input id="boxactivo" name="emp_selected" value="" type="hidden">
+        <ul>
+           <li><a href="/">Home</a></li>
+           <li class="dropdown">
+               <a href="javascript:void(0)" class="dropbtn" onmouseover="cerrar_marcos(), etiqueta_gestor()" >Gestor</a>
+               <div class="dropdown-content">
+                      <a href="javascript:void(0)"  onclick="acceso_gest('Gestor')">Acceso</a>
+               </div>
+           </li>
+           <li class="dropdown">
+               <a href="javascript:void(0)" class="dropbtn" onmouseover="cerrar_marcos(), etiqueta_empresario()" >Empresario</a>
+               <div class="dropdown-content">
+                      <a href="javascript:void(0)"  onclick="signup_emp()">Sign Up</a>
+                      <a href="javascript:void(0)"  onclick="acceso_gest('Empresario')">Login</a>
+               </div>
+           </li>
+           <li class="dropdown">
+               <a href="javascript:void(0)" class="dropbtn" onmouseover="cerrar_marcos(), etiqueta_prof()" >Profesional</a>
+               <div class="dropdown-content">
+                      <a href="javascript:void(0)"  onclick="abrir_signup()">Sign Up</a>
+                      <a href="javascript:void(0)"  onclick="acceso_gest('Profesional')">Login</a>
+               </div>
+           </li>
+           <li><a href="javascript:void(0)" onmouseover="cerrar_marcos()" onclick="about_us()">About us</a></li>
+        </ul>
+    </div>
+    <div id="password_gest" class="marcocentro" style="display:none; width:30%; border-color:#A52A2A">
+
+    </div>
+    <div id="marcocentro">
+       <img src="static/imagenes/empresario03.jpg" style="width:87%; height:87%; margin-left:5%">
+    </div>
+    <div id="marcoright" style="display:none; text-align: justify">
+
+    </div>
+    <div id="bottom" class="footer">
+        <p style="font-family:Amarante; font-size:200%">
+            <img src="/static/imagenes/Copyright.png" style="width:13px;height:13px;">
+            Proyecto de prácticas desarrollado por Gonzalo Moreno <br>Todos los datos que aparecen son ficticios<br>Enero 2023
+        </p>
+    </div>
+</body>
+</html>

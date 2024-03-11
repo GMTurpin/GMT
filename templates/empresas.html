@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <title>GESTIMPROF- Directorio de empresas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/empresa.js"></script>
+    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script >
+    <script>
+       $(document).ready(function(){
+          console.log('jQUERY listo');
+          $('[data-toggle="tooltip"]').tooltip();
+       });
+    </script>
+</head>
+<body>
+   <div class="header" style="background-image:url('/static/imagenes/logoheader4.jpg');height:50">
+        <h1 style="font-size:48px">GestImprof</h1>
+   </div>
+   <div id="enlaces" class="marcoleft">
+        <ul>
+            {% if logged %}
+               <li><a href="/">Home</a></li>
+               <li><a href="logout">Log Out ({{ nickname }})</a></li>
+               <li><a href="javascript:void(0)" >About us</a></li>
+            {% else %}
+               <li><a href="/">Home</a></li>
+               <li><a href="javascript:void(0)" onclick="about_us()">About us</a></li>
+            {% endif %}
+        </ul>
+   </div>
+   <div id="recuadro" class="marcocentro" style="width:40%">
+        <h2>
+          Directorio de empresas
+        </h2>
+        <div id="zona_izda" style="width:90%; float:left">
+          <div id="las_empresas">
+              <form action="empresas" method="post" name="empresas" style="width:100%" >
+                 <select id="cuadro_emp" name="cuadro_emp" size="5" style="width:100%" onclick="cuadro_emp_click(this.value)" >
+                     {% for valor in empresas %}
+                         <option value="{{ valor }}"> {{ valor[1] }} </option>
+                     {% endfor %}
+                 </select>
+                 <div id="botones" style="float:right">
+                       <input id="añadir" type="button"  value="+" data-toggle="tooltip" title="Añadir empresa"
+                              style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px" onclick="abrir_newEmp()">
+                       <input id="eliminar" type="button"  value="x" data-toggle="tooltip" title="Eliminar empresa"
+                              style="font-weight:bold; border-radius:8px; position:relative; width:30px; height:30px" onclick="borrar_empresa()">
+                 </div>
+                       <button id="set_clave" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:35px; height:30px;
+                                cursor:pointer" disabled onclick="poner_clave()">
+                           <img src="/static/imagenes/candado.jpg"  data-toggle="tooltip" title="Asignar clave" width="100%" height="100%"/>
+                       </button>
+                       <button id="salir" type="button" class="boton" style="font-weight:bold; border-radius:8px; position:relative; width:35px; height:30px;
+                                visibility:hidden" onclick="cerrar_claves()">
+                           <img src="/static/imagenes/exit.jpg"  data-toggle="tooltip" title="Salir" width="100%" height="100%"/>
+                       </button>
+                       <div id="asignar_clave" style="width:98%; background-color:#FF7F50; padding:1%; display:none">
+                           <!-- Aquí se abre el area para asignar las claves de las empresas  -->
+                       </div>
+                       <input id="emp_selected" name="emp_selected" value="" type="hidden">
+                       <input id="codigo_emp" name="codigo_emp" value="" type="hidden">
+
+                 <div id="datosEmp"  style="background-color:#FAEBD7; width:100%; display:none" >
+                      <label>
+                         Datos de contacto
+                      </label><br>
+                      <textarea id="cuadroDatos" rows="4" cols="45" readonly >
+
+                      </textarea>
+                 </div>
+              </form>
+          </div>
+          <div id="activ"  style="display:none">
+            <form id="actividad" style="width:100%" >
+              <label for="activEmp">
+                   Actividad
+              </label><br>
+              <textarea id="activEmp" name="activEmp" rows="7" cols="51" onclick="document.getElementById('saveActiv').disabled=false" >
+<!--       Aquí se muestran los datos de la actividad de la empresa seleccionada   -->
+              </textarea>
+              <input id="saveActiv" name="saveActiv" type="submit"  data-toggle="tooltip" title="Guardar información"  value="Guardar" style="font-weight:bold;
+                   border-radius:8px" onclick="save_activ()" >
+            </form>
+          </div>
+        </div>
+        <div id="zona_dcha" style="width:50%; display:inline; float:left">
+              <div id="depEmp">
+    <!--   Aquí se mostrará el contenido de la página Deptos.html     -->
+              </div>
+              <div id="delegs">
+    <!--           Aquí se mostrará el contenido de la página Delegs.html     -->
+              </div>
+        </div>
+   </div>
+</body>
+</html>

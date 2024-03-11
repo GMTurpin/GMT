@@ -1,0 +1,102 @@
+
+INICIO DEL archivo server.py
+
+try:
+    conexion = mysql.connector.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='master#7523',
+        database='gestor'
+    )
+    if conexion.is_connected():
+        print('Conexion exitosa')
+        mycursor = conexion.cursor()
+        mycursor.execute("SELECT DATABASE()")
+        row=mycursor.fetchone()
+        print('Conectado a la base de datos:{}'.format(row))
+#        mycursor.execute("CREATE TABLE empresas (Ref INT, Empresa VARCHAR(40), NIF VARCHAR(9), Director VARCHAR(40), Telefono INT)")
+        add_empresa=("INSERT INTO empresas (Ref,Empresa, NIF, Director, Telefono) VALUES (%s, %s, %s, %s, %s)")
+        data_empresa=('432','CIBERWORKS','B93462557','Alan Reynolds','943652878')
+        mycursor.execute(add_empresa,data_empresa)
+        mycursor.execute("SELECT * FROM empresas")
+        fila=mycursor.fetchone()
+        while fila is not None:
+            print(fila[3])
+            fila = mycursor.fetchone()
+except Exception as ex:
+    print(ex)
+finally:
+    if conexion.is_connected():
+       conexion.close()
+       print('Conexion finalizada')
+//=====================================================================================================================
+function validate_cita() {
+   if($("#calend").val() == "" || $("#reloj").val() == "") {
+         $("#menscita")
+             .find( "label" )
+             .eq( 0 )
+             .html("Debe seleccionar fecha y hora" );
+         $("#menscita").css('display','block')
+   } else {
+        fijacita( $('#refmarca').val(), $('#refprof').val(), $('#refdeleg').val() )
+   }
+}
+//===================================================================================================================
+function fijacita(lamarca,elprof,ladeleg) {
+   lafecha = $("#calend").val()
+   lahora = $("#reloj").val()
+   $.post('/fijacita', {c_marca:lamarca, c_prof:elprof, c_deleg:ladeleg, fecha:lafecha, hora:lahora})
+      .done(function(data) {
+         $("#menscita")
+             .find( "label" )
+             .eq( 0 )
+             .html( data );
+         $("#menscita").css('display','block')
+      },"json")
+}
+//===================================================================================================================
+function vercitas(num_deleg)  {
+   $.get("/static/agendaentrev.html", function(htmlexterno){
+        $("#espacio_agendaentrevistas").html(htmlexterno);
+         $("#espacio_agendaentrevistas").css('display','block')
+   });
+
+   $.post('/ver_agenda', {ref_deleg:num_deleg})
+      .done(function(data) {
+          $('#lascitas').append('<tr><th>Fecha</th><th>Hora</th><th>Profesional</th><th>Especialidad</th></tr>')
+          for (let i=0; i < data.length; i++) {
+               fecha = new Date(data[i][1])
+               fechaform = fecha.toLocaleDateString()
+               $("#lascitas").append('<tr><td>' + fechaform + '</td><td>' + data[i][3] + '</td><td>' + data[i][4] + '</td><td>' + data[i][2] +'</td></tr>')
+          }
+      },"json")
+}
+//===================================================================================================================
+function imprimirVarios(elem1,elem2, elem3){
+      var ventana = window.open('', 'PRINT', 'height=700,width=900');
+      ventana.document.write('<img src="/static/imagenes/Gestimprof.jpg" height="10%"  width="100%">')
+      ventana.document.write('<html><head><title>' + document.title + '</title>');
+      ventana.document.write('<link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>')
+      ventana.document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">')
+      ventana.document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul">')
+      ventana.document.write('</head><body >');
+      ventana.document.write(elem1.innerHTML);
+      ventana.document.write(elem2.innerHTML);
+      ventana.document.write(elem3.innerHTML);
+      ventana.document.write('</body></html>');
+      ventana.document.write('<input type="button" value="Imprimir" onclick = "self.print()" />')
+      ventana.document.write('<input type="button" value="Cerrar" onclick = "self.close()" />')
+      ventana.document.close();
+      ventana.focus();
+      return true;
+}
+//=====================================================================================================
+
+
+
+
+
+
+
+
