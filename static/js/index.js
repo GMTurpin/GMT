@@ -127,7 +127,7 @@ function valid_usuario(usuario) {
 	    if(usuario=='Profesional') {
 	         check_prof(clave)
 	    } else {
-	        check_clave_emp(clave)
+	         check_clave_emp(clave)
 	    }
 	}
 }
@@ -174,15 +174,15 @@ function check_clave_emp(param)  {
            $("#mensajes").append(data[0]+"  "+data[1]+" "+data[2])
            $("#mensajes").delay(7000).show()
            if(data[0]!='ERROR') {
-                 $("#check_pass").val('ENTRAR')
-                 $("#check_pass").click(function() {
+                 $("#check_pass").css('visibility','hidden')
+                 $("#entrar").css('visibility','visible')
+                 $("#entrar").click(function() {
                     cargar_empresas('EMPRESARIO',param)
                  })
            }
     },"json")
        .fail(function() {
-          alert(data[1])
-          alert('Ha fallado check_clave')
+          swal({title:"ERROR",text:'Ha fallado check_clave',icon:"error", button:"EXIT"})
        })
 }
 //===================================================================================================================
@@ -204,8 +204,7 @@ function cargar_empresas(modo,clave) {
           }
        },"json")
        .fail(function() {
-          alert(data[1]).text(data[1][1])
-          alert('Ha fallado cargar_empresas')
+          swal({title:"ERROR",text:'Ha fallado cargar empresas',icon:"error", button:"EXIT"})
        })
 }
 //===================================================================================================================
