@@ -3,6 +3,7 @@ function signup_emp() {
    $.get("/static/newEmpresa.html", function(htmlexterno){
         $("#marcocentro").html(htmlexterno);
    });
+   $("#password_gest").hide();
    $("#marcocentro").show();
 }
 //===================================================================================================================
@@ -11,6 +12,7 @@ function abrir_signup() {
    $.get("/static/signup.html", function(htmlexterno){
         $("#marcocentro").html(htmlexterno);
    });
+   $("#password_gest").hide();
    $("#marcocentro").show();
 }
 //===================================================================================================================
@@ -44,10 +46,6 @@ function ver_informacion(param)  {
 }
 //===================================================================================================================
 function cerrar_marcos() {
-    if($("#boxactivo").val()!="about") {
-       $("#marcocentro").hide();
-    }
-    $("#password_gest").hide();
     $("#marcoright").hide();
 }
 //===================================================================================================================
@@ -100,12 +98,27 @@ function valid_gestor() {
 	    document.getElementById("errores_acceso").style.display = "block"
 	} else {
 
-        $("#check_pass").click(function(){
-           $("#password_gest").hide();
-        });
-	    cargar_empresas('GESTOR','Todas');
+    //    $("#check_pass").click(function(){
+    //       $("#password_gest").hide();
+    //    });
+	//    cargar_empresas('GESTOR','Todas');
+	    opciones_gestor();
 	}
 }
+//===================================================================================================================
+function opciones_gestor(){
+    $("#marcocentro").hide()
+    etiqueta="Opciones del Gestor"
+    $.get("/static/opciones.html", function( data ){
+         $("#password_gest").html( data);
+         $("#password_gest")
+            .find( "h2" )
+            .eq( 0 )
+            .html( etiqueta );
+       });
+       $("#password_gest").show();
+}
+
 //===================================================================================================================
 function valid_usuario(usuario) {
 	var form = document.forms["pass_acceso"];
@@ -210,10 +223,13 @@ function cargar_empresas(modo,clave) {
 //===================================================================================================================
 function about_us() {
    $("#boxactivo").val("about")
+   $("#marcoright").hide()
    $("#marcocentro").empty()
    $.get("/static/AboutUs.html", function(htmlexterno){
         $("#marcocentro").html(htmlexterno);
    });
+   $("#password_gest").hide();
+   $("#marcocentro").hide();
    $("#marcocentro").slideToggle(500,"linear");
 }
 //===================================================================================================================

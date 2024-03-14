@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <link href="static/css/newstyle.css" rel="stylesheet" type="text/css"/>
+    <title> GESTIMPROF - Opciones del Gestor </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+<body>
+    <h2>Opciones del gestor</h2>
+    <form id="form_opciones">
+      <div id="cajon_opciones" style="margin:auto">
+        <ul class="errorMessages" id="errores_opciones"  style="display:none" ></ul>
+          <table style="width:100%;padding:6%; padding:0px">
+              <tr><td style="width:50%; text-align:center; border:0px; background-color:silver"><img src="/static/imagenes/empresa.jpg" style="height:100%; width:100%"></td>
+                  <td style="width:50%; text-align:center; border:0px; background-color:silver"><img src="/static/imagenes/PROFESIONALES.jpg" style="height:160px; width:100%"></td>
+              </tr>
+              <tr><td style="width:50%; border:0px; background-color:silver"><input id="empresas" name="empresas" class="boton" type="button"  style="font-size:110%; height:35px"
+                  value="EMPRESAS" onclick="cargar_empresas('GESTOR','Todas')"></td>
+                  <td
+                          style="width:50%; border:0px; background-color:silver"><input id="profesionales" name="profesionales" class="boton" type="button"  style="font-size:110%; height:35px" value="PROFESIONALES"></td>
+              </tr>
+          </table>
+      </div>
+    </form>
+</body>
+</html>
